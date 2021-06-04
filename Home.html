@@ -1,0 +1,124 @@
+<html>
+<head>
+<style>
+body
+{
+background-color:pink;
+background-image:url(form.jpg);
+background-repeat:no-repeat;
+background-attachment:fixed;
+background-size:cover;
+}
+
+ol{
+margin-left:100pt;
+color:orange;
+font-size:25;
+font-style:italic;
+}
+input.b0
+{
+margin-left:100pt;
+color:purple;
+background-color:pink;
+font-size:15;
+
+}
+input.b1{
+margin-left:58pt;
+background-color:pink;
+color:purple;
+font-size:18;
+}
+input.b2{
+margin-left:95pt;
+background-color:pink;
+
+}
+input.b5{
+margin-left:104pt;
+background-color:pink;
+}
+input.b6{
+margin-left:95pt;
+background-color:pink;
+}
+input.b7{
+margin-left:120pt;
+background-color:pink;
+}
+input.b8{
+margin-left:40pt;
+background-color:pink;
+}
+</style>
+<center><h1 style="color:red"><b>APPLICATION</b></h1></center>
+<script>
+function allLetter(inputtxt)
+      { 
+      var letters = /^[A-Za-z]+$/;
+      if(inputtxt.value.match(letters))
+      {
+       return true;
+      }
+      else
+      {
+      alert('Please input alphabet characters only');
+      return false;
+      }
+      }
+function alphanumeric1(add)
+{
+var letters = /^[0-9a-zA-Z]+$/;
+if(add.value.match(letters))
+{
+return true;
+}
+else{          
+alert('please enter valid character');
+return false;
+}
+}
+function ValidateEmail(mail)
+{
+var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+if(mail.value.match(mailformat))
+{
+return true;
+}
+else{
+alert('input valid characters');
+return false;
+}
+}
+function allnumeric1(salary)
+{
+var sal= /^[0-9,.]+$/;
+if(salary.value.match(sal))
+{
+return true;	
+}
+else{
+alert('please input only numbers');
+return false;
+}
+}
+</script>
+</head>
+<body>
+<h2>Fill the below details:</h2>
+<form name="form"action="submit.html" method="POST" >
+<ol type="1">
+<li>Name:<input class="b0" type="text" name="text1" onmouseleave="allLetter(document.form.text1)" required></li></br>
+<li>Gender:<input class="b2" type="radio" value="Male"name="sex" />Male</option>
+<input type="radio" value="Female" name="sex"/>Female</option>
+<input class="b4" type="radio" value="other" name="sex">Other</li><br/>
+<li>Date Of Birth:<input class="b1" type="date" name="text2"required> </li></br>
+<li>Address:<input class="b5" type="text"  name="text6" onmouseleave="alphanumeric1(document.form.text6)" required ></li></br>
+<li><label for="phoneno">Phone no:<input class="b6" type="number" name="phoneno" id="phoneno" pattern="[0-9]{10}" required ></label></li></br>
+<li>Gmail:<input class="b7" type="text" name="text3" onmouseleave="Email(document.form.text3)"  required></li></br>
+<li>Salary(expected):<input class="b8" type="text" name="text4" onmouseleave="allnumeric1(document.form.text4)" required></li></ol></br>
+<input type="reset" value="Reset"/>
+<input type="submit"value="submit"></form>
+</body>
+</html>

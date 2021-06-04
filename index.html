@@ -1,0 +1,167 @@
+<html>
+<head>
+<style>
+body{
+text-align:center;
+line-height:5pt;
+background-image:url(front.jpg);
+background-repeat:no-repeat;
+background-attachment:fixed;
+background-size:750pt;
+color:purple;
+}
+form{
+position:absolute;
+top:150pt;
+left:350pt;
+font-size:25pt;
+
+}
+input.b1{
+font-size:13pt;
+color:orange;
+font-style:italic;
+
+}
+input.b2{
+font-size:13pt;
+font-style:italic;
+color:orange;
+}
+input.b3{
+font-size:15pt;
+color:green;
+}
+input.b4{
+font-size:15pt;
+color:green;
+}
+.valid
+{
+color:green;
+}
+.valid:before
+{
+position:relative;
+left:-50px;
+content:"✔";
+
+}
+.invalid:before:
+{
+color:green;
+}
+.invalid:before
+{
+position:relative;
+left:-35px;
+content:"X";
+
+}
+.invalid{
+color:red;
+}
+.container{
+background-color:yellow;
+padding:20pt;
+margin-top:8px;
+}
+
+/* The message box is shown when the user clicks on the password field */
+#message {
+  display:none;
+  background: black;
+  color: pink;
+  position: relative;
+ padding:20pt;
+  margin-top: 378px;
+}
+
+
+
+</style>
+	
+</head>
+<body>
+<form action="form1.html" method="GET">
+<div class="container">
+<label for="username" >USERNAME:
+<input type="text" id="username" name="text1" class="b1" pattern="[A-Za-z]{2.,}" title="Must be 8 characters" required><br><br><br><br><br>
+<label for="password" >PASSWORD:</label>
+<input type="password" id="psw" name="psw" class="b2" pattern="[a-zA-Z0-9]{8}" title="Must contain 8 & one number & mixed capital and small characters" required><br><br><br><br>
+<input type="reset" class="b3" value="RESET">
+<input type="submit" class="b4" value="SUBMIT"></div></form>
+<div id="message">
+  <h3>Password must contain the following:</h3>
+  <p id="letter" class="invalid">A <b>lowercase</b> letter</p><br><br>
+  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p><br><br>
+  <p id="number" class="invalid">A <b>number</b></p><br><br>
+  <p id="length" class="invalid">Minimum <b>8 characters</b></p><br><br>
+</div>
+				
+<script>
+var myInput = document.getElementById("psw");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+// When the user clicks on the password field, show the message box
+myInput.onfocus = function() {
+  document.getElementById("message").style.display = "block";
+}
+
+// When the user clicks outside of the password field, hide the message box
+myInput.onblur = function() {
+  document.getElementById("message").style.display = "none";
+}
+
+// When the user starts to type something inside the password field
+myInput.onkeyup = function() {
+  // Validate lowercase letters
+  var lowerCaseLetters = /[a-z]/g;
+  if(myInput.value.match(lowerCaseLetters)) {  
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+  }
+  
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput.value.match(upperCaseLetters)) {  
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {  
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+  
+  // Validate length
+  if(myInput.value.length >= 8) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+}
+</script>
+
+</body>
+</html>
+
+
+
+
